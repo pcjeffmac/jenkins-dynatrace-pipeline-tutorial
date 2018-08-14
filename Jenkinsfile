@@ -91,9 +91,9 @@ node {
             archiveArtifacts artifacts: 'dqlstagingreport.html', fingerprint: true
             
             // get the link to the service's dashboard and make it an artifact
-            sh 'python3 dtcli.py link srv tags/CONTEXTLESS:DockerService=SampleNodeJsStaging '+
-                        'overview 60:0 ${DT_URL} ${DT_TOKEN} > dtstagelinks.txt'
-            archiveArtifacts artifacts: 'dtstagelinks.txt', fingerprint: true
+            //sh 'python3 dtcli.py link srv tags/CONTEXTLESS:DockerService=SampleNodeJsStaging '+
+            //            'overview 60:0 ${DT_URL} ${DT_TOKEN} > dtstagelinks.txt'
+            //archiveArtifacts artifacts: 'dtstagelinks.txt', fingerprint: true
         }
     }
     
