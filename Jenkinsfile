@@ -167,9 +167,9 @@ node {
             sh 'mv dqlreport.html dqlproductionreport.html'
             archiveArtifacts artifacts: 'dqlproductionreport.html', fingerprint: true
 
-            // sh 'python3 dtcli.py link srv tags/CONTEXTLESS:DockerService=SampleNodeJsProduction ' +
-            //    ' overview 60:0 ${DT_URL} ${DT_TOKEN} > dtprodlinks.txt'
-            // archiveArtifacts artifacts: 'dtprodlinks.txt', fingerprint: true
+            sh 'python3 dtcli.py link srv tags/CONTEXTLESS:DockerService=SampleNodeJsProduction ' +
+            	' overview 60:0 ${DT_URL} ${DT_TOKEN} > dtprodlinks.txt'
+            archiveArtifacts artifacts: 'dtprodlinks.txt', fingerprint: true
         }
     }    
 }
