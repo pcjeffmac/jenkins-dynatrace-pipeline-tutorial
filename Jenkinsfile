@@ -37,7 +37,7 @@ node {
     stage('DeployStaging') {
         // Lets deploy the previously build container
         def app = docker.image("sample-nodejs-service:${BUILD_NUMBER}")
-        app.run("--name SampleNodeJsStaging -p 80:80 " +
+        app.run("--name SampleNodeJsStaging -p 82:80 " +
                 "-e 'DT_CLUSTER_ID=SampleNodeJsStaging' " + 
                 "-e 'DT_TAGS=Environment=Staging Service=Sample-NodeJs-Service' " +
                 "-e 'DT_CUSTOM_PROP=ENVIRONMENT=Staging JOB_NAME=${JOB_NAME} " + 
@@ -68,7 +68,7 @@ node {
         dir ('sample-nodejs-service-tests') {
             // start load test and run for 120 seconds - simulating traffic for Staging enviornment on port 80
             sh "rm -f stagingloadtest.log stagingloadtestcontrol.txt"
-            sh "./loadtest.sh 80 stagingloadtest.log stagingloadtestcontrol.txt 120 Staging"
+            sh "./loadtest.sh 82 stagingloadtest.log stagingloadtestcontrol.txt 120 Staging"
             
             archiveArtifacts artifacts: 'stagingloadtest.log', fingerprint: true
         }
