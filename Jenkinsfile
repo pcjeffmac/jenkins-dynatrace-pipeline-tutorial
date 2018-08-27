@@ -43,7 +43,7 @@ node {
                 "-e 'DT_CUSTOM_PROP=ENVIRONMENT=Staging JOB_NAME=${JOB_NAME} " + 
                     "BUILD_TAG=${BUILD_TAG} BUILD_NUMBER=${BUIlD_NUMBER}'")
 		
-		 //send event to dynatrace
+        //send event to dynatrace
         dir ('dynatrace-post') { 
         httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token 7tEzakG8S2-02dv5w8SU2']], httpMode: 'POST', ignoreSslErrors: true, requestBody: '''{
   		"eventType": "CUSTOM_DEPLOYMENT",
