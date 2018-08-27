@@ -53,7 +53,7 @@ node {
         	"tags" : "DockerService"
     		}
   		},
-  		"deploymentName":" ' + ${JOB_NAME} ' ",
+  		"deploymentName":" env.JOB_NAME,
   		"deploymentVersion":"1.1",
   		"deploymentProject":"DockerService",
   		"remediationAction":"http://revertMe",
