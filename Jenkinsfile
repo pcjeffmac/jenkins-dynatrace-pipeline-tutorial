@@ -13,7 +13,7 @@ node {
     stage('Checkout') {
         // Checkout our application source code
         git url: 'https://github.com/pcjeffmac/jenkins-dynatrace-pipeline-tutorial.git', credentialsId: '0ab85f6f2492796b11f0fdb1cded9efe37e0a68e', branch: 'master'
-        
+        echo "GIT_COMMIT is ${env.GIT_COMMIT}"
         // into a dynatrace-cli subdirectory we checkout the CLI
         dir ('dynatrace-cli') {
             git url: 'https://github.com/pcjeffmac/dynatrace-cli.git', credentialsId: '0ab85f6f2492796b11f0fdb1cded9efe37e0a68e', branch: 'master'
@@ -60,7 +60,7 @@ node {
   		"ciBackLink":"${BUILD_URL}",
   		"source":"Jenkins",
   		"customProperties":{
-    	"Jenkins Build Number": "${BUILD_ID}",
+    	"Jenkins Build Number": "(${BUILD_ID})",
     	"Git commit": "${GIT_COMMIT}"
   		}
 		}''', responseHandle: 'NONE', url: 'https://buh931.dynatrace-managed.com/e/89c9109a-79f9-43c7-8f78-37372eca07e1/api/v1/events/'
