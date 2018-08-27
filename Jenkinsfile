@@ -61,7 +61,7 @@ node {
   		"source":"Jenkins",
   		"customProperties":{
     	"Jenkins Build Number": "env.${BUILD_ID}",
-    	"Git commit": "${GIT_COMMIT}"
+    	"Git commit": "'${GIT_COMMIT}'"
   		}
 		}''', responseHandle: 'NONE', url: 'https://buh931.dynatrace-managed.com/e/89c9109a-79f9-43c7-8f78-37372eca07e1/api/v1/events/'
         }
