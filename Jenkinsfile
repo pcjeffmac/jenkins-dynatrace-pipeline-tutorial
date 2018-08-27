@@ -13,7 +13,6 @@ node {
     stage('Checkout') {
         // Checkout our application source code
         git url: 'https://github.com/pcjeffmac/jenkins-dynatrace-pipeline-tutorial.git', credentialsId: '0ab85f6f2492796b11f0fdb1cded9efe37e0a68e', branch: 'master'
-        echo "GIT_COMMIT is" + ${GIT_COMMIT}
         // into a dynatrace-cli subdirectory we checkout the CLI
         dir ('dynatrace-cli') {
             git url: 'https://github.com/pcjeffmac/dynatrace-cli.git', credentialsId: '0ab85f6f2492796b11f0fdb1cded9efe37e0a68e', branch: 'master'
@@ -43,30 +42,28 @@ node {
                 "-e 'DT_CUSTOM_PROP=ENVIRONMENT=Staging JOB_NAME=${JOB_NAME} " + 
                     "BUILD_TAG=${BUILD_TAG} BUILD_NUMBER=${BUIlD_NUMBER}'")
 		
-        //send event to dynatrace
-        dir ('dynatrace-post') { 
-        httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token 7tEzakG8S2-02dv5w8SU2']], httpMode: 'POST', ignoreSslErrors: true, requestBody: '''{
-  		"eventType": "CUSTOM_DEPLOYMENT",
-  		"attachRules": {
-    		"tagRule" : {
-        	"meTypes" : "HOST",
-        	"tags" : "DockerService"
-    		}
-  		},
-  		"deploymentName":" ${JOB_NAME},
-  		"deploymentVersion":"1.1",
-  		"deploymentProject":"DockerService",
-  		"remediationAction":"http://revertMe",
-  		"ciBackLink":"${BUILD_URL}",
-  		"source":"Jenkins",
-  		"customProperties":{
-    	"Jenkins Build Number": "${BUILD_ID}",
-    	"Git commit": "${GIT_COMMIT}"
-  		}
-		}''', responseHandle: 'NONE', url: 'https://buh931.dynatrace-managed.com/e/89c9109a-79f9-43c7-8f78-37372eca07e1/api/v1/events/'
-        }
 		
         dir ('dynatrace-scripts') {
+        	// Post tp Dynatrace
+        	httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token 7tEzakG8S2-02dv5w8SU2']], httpMode: 'POST', ignoreSslErrors: true, requestBody: '''{
+  			"eventType": "CUSTOM_DEPLOYMENT",
+  				"attachRules": {
+    				"tagRule" : {
+        			"meTypes" : "HOST",
+        			"tags" : "DockerService"
+    				}
+  				},
+  			"deploymentName":" "${JOB_NAME}",
+  			"deploymentVersion":"1.1",
+  			"deploymentProject":"DockerService",
+  			"remediationAction":"http://revertMe",
+  			"ciBackLink":"${BUILD_URL}",
+  			"source":"Jenkins",
+  			"customProperties":{
+    		"Jenkins Build Number": "${BUILD_ID}",
+    		"Git commit": "${GIT_COMMIT}"
+  			}
+			}''', responseHandle: 'NONE', url: 'https://buh931.dynatrace-managed.com/e/89c9109a-79f9-43c7-8f78-37372eca07e1/api/v1/events/'
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
             sh './pushdeployment.sh HOST AWS Environment JenkinsTutorial ' +
                '${BUILD_TAG} ${BUILD_NUMBER} ${JOB_NAME} ' + 
