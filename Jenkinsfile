@@ -53,7 +53,7 @@ httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-
         "tags" : "DockerService"
     }
   },
-  "deploymentName":'${JOB_NAME}',
+  "deploymentName": "${JOB_NAME}",
   "deploymentVersion":"1.1",
   "deploymentProject":"DockerService",
   "remediationAction":"http://revertMe",
