@@ -53,7 +53,7 @@ httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-
         "tags" : "DockerService"
     }
   },
-  "deploymentName":"${JOB_NAME}",
+  "deploymentName":'${JOB_NAME}',
   "deploymentVersion":"1.1",
   "deploymentProject":"DockerService",
   "remediationAction":"http://revertMe",
@@ -64,6 +64,7 @@ httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-
     "Git commit": "${GIT_COMMIT}"
   }
 }''', responseHandle: 'NONE', url: 'https://buh931.dynatrace-managed.com/e/89c9109a-79f9-43c7-8f78-37372eca07e1/api/v1/events/'
+
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
             sh './pushdeployment.sh HOST AWS Environment JenkinsTutorial ' +
                '${BUILD_TAG} ${BUILD_NUMBER} ${JOB_NAME} ' + 
