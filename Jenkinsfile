@@ -42,10 +42,14 @@ node {
                 "-e 'DT_CUSTOM_PROP=ENVIRONMENT=Staging JOB_NAME=${JOB_NAME} " + 
                     "BUILD_TAG=${BUILD_TAG} BUILD_NUMBER=${BUIlD_NUMBER}'")
 		
-		def printParams() {
-  			env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
-		}
-		printParams()
+script {
+        sh 'env > env.txt'
+        String[] envs = readFile('env.txt').split("\r?\n")
+
+        for(String vars: envs){
+            println(vars)
+        }
+    }
 		
         dir ('dynatrace-scripts') {
         	//Dynatrace POST action
