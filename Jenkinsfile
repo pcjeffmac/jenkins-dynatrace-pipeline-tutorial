@@ -45,26 +45,6 @@ node {
 		
         dir ('dynatrace-scripts') {
         
-        writeJSON file: 'buildtag.json', json: ' { "eventType": "CUSTOM_DEPLOYMENT",
-  "attachRules": {
-    "tagRule" : {
-        "meTypes" : "HOST",
-        "tags" : "DockerService"
-    }
-  },
-  "deploymentName": "${JOB_NAME}",
-  "deploymentVersion":"1.1",
-  "deploymentProject":"DockerService",
-  "remediationAction":"http://revertMe",
-  "ciBackLink":"${BUILD_URL}",
-  "source":"Jenkins",
-  "customProperties":{
-    "Jenkins Build Number": "${BUILD_ID}",
-    "Git commit": "${GIT_COMMIT}"
-  }
-} '
-        
-
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
             sh './pushdeployment.sh HOST AWS Environment JenkinsTutorial ' +
                '${BUILD_TAG} ${BUILD_NUMBER} ${JOB_NAME} ' + 
