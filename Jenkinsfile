@@ -43,7 +43,7 @@ node {
                     "BUILD_TAG=${BUILD_TAG} BUILD_NUMBER=${BUIlD_NUMBER}'")
 
 echo "BUILD_NUMBER - ${BUILD_NUMBER}"
-echo "GIT_COMMIT - ${GIT_COMMIT}"
+//echo "GIT_COMMIT - ${GIT_COMMIT}"
 		
         dir ('dynatrace-scripts') {
 
