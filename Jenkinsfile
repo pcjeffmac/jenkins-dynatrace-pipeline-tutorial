@@ -46,7 +46,7 @@ node {
         dir ('dynatrace-scripts') {
         	//Dynatrace POST action
         	
-        	def body = '{"eventType": "CUSTOM_DEPLOYMENT",
+        	def body = ''{"eventType": "CUSTOM_DEPLOYMENT",
   "attachRules": {
     "tagRule" : {
         "meTypes" : "HOST",
@@ -63,7 +63,7 @@ node {
     "Jenkins Build Number": "${BUILD_ID}",
     "Git commit": "${GIT_COMMIT}"
   }
-}'
+}''
         	
 httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token 7tEzakG8S2-02dv5w8SU2']], httpMode: 'POST', ignoreSslErrors: true, requestBody: 'body', responseHandle: 'NONE', url: 'https://buh931.dynatrace-managed.com/e/89c9109a-79f9-43c7-8f78-37372eca07e1/api/v1/events/'        	
         
