@@ -13,6 +13,7 @@ node {
     stage('Checkout') {
         // Checkout our application source code
         git url: 'https://github.com/pcjeffmac/jenkins-dynatrace-pipeline-tutorial.git', credentialsId: '0ab85f6f2492796b11f0fdb1cded9efe37e0a68e', branch: 'master'
+        env.GIT_COMMIT = scmVars.GIT_COMMIT
         // into a dynatrace-cli subdirectory we checkout the CLI
         dir ('dynatrace-cli') {
             git url: 'https://github.com/Dynatrace/dynatrace-cli.git', credentialsId: 'cd41a86f-ea57-4477-9b10-7f9277e650e1', branch: 'master'
@@ -53,7 +54,7 @@ node {
         				"tags" : "DockerService"
     					}
   					},
-  					"deploymentName":"${JOB_NAME}",
+  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER}",
   					"deploymentVersion":"1.1",
   					"deploymentProject":"DockerService",
   					"remediationAction":"https://192.168.2.85/#/templates/job_template/7",
