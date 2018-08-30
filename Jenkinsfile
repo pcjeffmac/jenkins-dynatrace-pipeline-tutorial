@@ -60,8 +60,7 @@ node {
   "ciBackLink":"${BUILD_URL}",
   "source":"Jenkins",
   "customProperties":{
-    "Jenkins Build Number": "${BUILD_ID}",
-    "Git commit": "${GIT_COMMIT}"
+    "Jenkins Build Number": "${BUILD_ID}"
   }
 }"""
         	
