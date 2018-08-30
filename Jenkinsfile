@@ -42,7 +42,7 @@ node {
                 "-e 'DT_CUSTOM_PROP=ENVIRONMENT=Staging JOB_NAME=${JOB_NAME} " + 
                     "BUILD_TAG=${BUILD_TAG} BUILD_NUMBER=${BUIlD_NUMBER}'")
 
-echo "BUILD_NUMBER" ${BUILD_NUMBER}
+echo "BUILD_NUMBER - ${BUILD_NUMBER}" 
 		
         dir ('dynatrace-scripts') {
         	//Dynatrace POST action
