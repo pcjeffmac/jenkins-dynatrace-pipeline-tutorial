@@ -56,7 +56,7 @@ node {
   					"deploymentName":"${JOB_NAME}",
   					"deploymentVersion":"1.1",
   					"deploymentProject":"DockerService",
-  					"remediationAction":"http://revertMe",
+  					"remediationAction":"https://192.168.2.85/#/templates/job_template/7",
   					"ciBackLink":"${BUILD_URL}",
   					"source":"Jenkins",
   					"customProperties":{
