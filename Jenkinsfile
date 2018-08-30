@@ -13,7 +13,6 @@ node {
     stage('Checkout') {
         // Checkout our application source code
         git url: 'https://github.com/pcjeffmac/jenkins-dynatrace-pipeline-tutorial.git', credentialsId: '0ab85f6f2492796b11f0fdb1cded9efe37e0a68e', branch: 'master'
-        env.GIT_COMMIT = scmVars.GIT_COMMIT
         // into a dynatrace-cli subdirectory we checkout the CLI
         dir ('dynatrace-cli') {
             git url: 'https://github.com/Dynatrace/dynatrace-cli.git', credentialsId: 'cd41a86f-ea57-4477-9b10-7f9277e650e1', branch: 'master'
@@ -43,6 +42,10 @@ node {
                 "-e 'DT_CUSTOM_PROP=ENVIRONMENT=Staging JOB_NAME=${JOB_NAME} " + 
                     "BUILD_TAG=${BUILD_TAG} BUILD_NUMBER=${BUIlD_NUMBER}'")
 		
+		def printParams() {
+  			env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
+		}
+		printParams()
 		
         dir ('dynatrace-scripts') {
         	//Dynatrace POST action
@@ -61,8 +64,7 @@ node {
   					"ciBackLink":"${BUILD_URL}",
   					"source":"Jenkins",
   					"customProperties":{
-    					"Jenkins Build Number": "${BUILD_ID}",
-    					"Git commit": "${GIT_COMMIT}"
+    					"Jenkins Build Number": "${BUILD_ID}"
   						}
 					}"""
         	
