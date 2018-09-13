@@ -210,7 +210,7 @@ node {
         }
         
         //NeoLoad Test
-        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject.nlp', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']
+        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']
         
         
         // now lets generate a report using our CLI and lets generate some direct links back to dynatrace
