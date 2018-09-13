@@ -208,11 +208,7 @@ node {
             DYNATRACE_PROBLEM_COUNT = sh (script: './checkforproblems.sh', returnStatus : true)
             echo "Dynatrace Problems Found: ${DYNATRACE_PROBLEM_COUNT}"
         }
-        
-        //NeoLoad Test
-        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']
-        
-        
+   
         // now lets generate a report using our CLI and lets generate some direct links back to dynatrace
         dir ('dynatrace-cli') {
             sh 'python3 dtcli.py dqlr srv tags/CONTEXTLESS:DockerService=SampleNodeJsProduction '+
@@ -224,5 +220,12 @@ node {
             	' overview 60:0 ${DT_URL} ${DT_TOKEN} > dtprodlinks.txt'
             archiveArtifacts artifacts: 'dtprodlinks.txt', fingerprint: true
         }
-    }    
+    }  
+    
+   stage('RunLoad') {
+        dir ('NeoLoad') {
+        //NeoLoad Test
+        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
+        }
+    }  
 }
