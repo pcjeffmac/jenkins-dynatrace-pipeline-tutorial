@@ -54,7 +54,7 @@ node {
         				"tags" : "DockerService"
     					}
   					},
-  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} ${STAGING}",
+  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Staging",
   					"deploymentVersion":"1.1",
   					"deploymentProject":"DockerService",
   					"remediationAction":"https://192.168.2.85/#/templates/job_template/7",
@@ -158,7 +158,7 @@ node {
         				"tags" : "DockerService"
     					}
   					},
-  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} ${PRODUCTION}",
+  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Production",
   					"deploymentVersion":"1.1",
   					"deploymentProject":"DockerService",
   					"remediationAction":"https://192.168.2.85/#/templates/job_template/7",
