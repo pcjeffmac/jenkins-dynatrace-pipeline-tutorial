@@ -77,7 +77,7 @@ node {
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
             sh './pushdeployment.sh HOST CONTEXTLESS mylab Jenkins ' +
                '${BUILD_TAG} ${BUILD_NUMBER} ${JOB_NAME} ' + 
-               'Jenkins ${JENKINS_URL} ${JOB_URL} ${BUILD_URL} ${GIT_COMMIT}'
+               'Jenkins ${JENKINS_URL} ${JOB_URL} ${BUILD_URL} None'
             
             // now I push one on the actual service (it has the tags from our rules)
             sh './pushdeployment.sh SERVICE CONTEXTLESS DockerService SampleNodeJsStaging ' + 
