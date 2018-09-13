@@ -47,6 +47,9 @@ PAYLOAD=$(cat <<EOF
 EOF
 )
 
+echo $10
+echo $11
+
 echo $PAYLOAD
 echo ${DT_URL}/api/v1/events
 curl -H "Content-Type: application/json" -H "Authorization: Api-Token ${DT_TOKEN}" -X POST -d "${PAYLOAD}" ${DT_URL}/api/v1/events
