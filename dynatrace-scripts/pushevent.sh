@@ -39,7 +39,7 @@ PAYLOAD=$(cat <<EOF
   "customProperties" : {
     "JenkinsUrl" : "$8",
     "BuildUrl" : "$9",
-    "GitCommit" : "$10"
+    "GitCommit" : "${10}"
   }
 }
 EOF
