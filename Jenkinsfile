@@ -209,6 +209,10 @@ node {
             echo "Dynatrace Problems Found: ${DYNATRACE_PROBLEM_COUNT}"
         }
         
+        //NeoLoad Test
+        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject.nlp', scenario: 'scenario2', trendGraphs: ['AvgResponseTime', 'ErrorRate']
+        
+        
         // now lets generate a report using our CLI and lets generate some direct links back to dynatrace
         dir ('dynatrace-cli') {
             sh 'python3 dtcli.py dqlr srv tags/CONTEXTLESS:DockerService=SampleNodeJsProduction '+
