@@ -211,14 +211,14 @@ node {
    stage('Run NeoLoad - scenario1') {
         dir ('NeoLoad') {
         //NeoLoad Test
-        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', reportXml: './neoload-report/scenario1-report.xml', reportHtml: './neoload-report/scenario1-report.html', reportJunit: './neoload-report/scenario1-junit-sla-results.xml', testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', testDescription: 'From Jenkins', commandLineOption: '-nlweb -nlwebAPIURL http://192.168.2.93:8080/ -nlwebToken UYWWcrEsfg5o37ASFBdeXh9Y', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
+        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', reportXml: '/home/dynatrace/NeoLoadProjects/DemoProject/neload-reports/sc1/scenario1-report.xml', reportHtml: '/home/dynatrace/NeoLoadProjects/DemoProject/neload-reports/sc1/scenario1-report.html', reportJunit: '/home/dynatrace/NeoLoadProjects/DemoProject/neload-reports/sc1/scenario1-junit-sla-results.xml', testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', testDescription: 'From Jenkins', commandLineOption: '-nlweb -nlwebAPIURL http://192.168.2.93:8080/ -nlwebToken UYWWcrEsfg5o37ASFBdeXh9Y', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
         }
     } 
     
    stage('Run NeoLoad - scenario2') {
         dir ('NeoLoad') {
         //NeoLoad Test
-        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', reportXml: './neoload-report/scenario2-report.xml', reportHtml: './neoload-report/scenario2-report.html', reportJunit: './neoload-report/scenario2-junit-sla-results.xml', testName: 'scenerio2 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', testDescription: 'From Jenkins', commandLineOption: '-nlweb -nlwebAPIURL http://192.168.2.93:8080/ -nlwebToken UYWWcrEsfg5o37ASFBdeXh9Y', scenario: 'scenario2', trendGraphs: ['AvgResponseTime', 'ErrorRate']    
+        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', reportXml: '/home/dynatrace/NeoLoadProjects/DemoProject/neload-reports/sc2/scenario2-report.xml', reportHtml: '/home/dynatrace/NeoLoadProjects/DemoProject/neload-reports/sc2/scenario2-report.html', reportJunit: '/home/dynatrace/NeoLoadProjects/DemoProject/neload-reports/sc2/scenario2-junit-sla-results.xml', testName: 'scenerio2 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', testDescription: 'From Jenkins', commandLineOption: '-nlweb -nlwebAPIURL http://192.168.2.93:8080/ -nlwebToken UYWWcrEsfg5o37ASFBdeXh9Y', scenario: 'scenario2', trendGraphs: ['AvgResponseTime', 'ErrorRate']    
         }
     } 
     
