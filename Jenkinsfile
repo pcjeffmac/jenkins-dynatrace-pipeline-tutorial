@@ -97,7 +97,7 @@ node {
         dir ('sample-nodejs-service-tests') {
             // start load test and run for 120 seconds - simulating traffic for Staging enviornment on port 80
             sh "rm -f stagingloadtest.log stagingloadtestcontrol.txt"
-            sh "./loadtest.sh 80 stagingloadtest.log stagingloadtestcontrol.txt 120 Staging"
+            sh "./loadtest.sh 8480 stagingloadtest.log stagingloadtestcontrol.txt 120 Staging"
             
             archiveArtifacts artifacts: 'stagingloadtest.log', fingerprint: true
         }
