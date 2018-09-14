@@ -19,6 +19,8 @@ node {
         }
     }
 
+	echo "Git Commit: ${GIT_COMMIT}"
+
     stage('Build') {
         // Lets build our docker image
         dir ('sample-nodejs-service') {
