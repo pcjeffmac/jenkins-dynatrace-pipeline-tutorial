@@ -7,7 +7,7 @@ node {
  
  	stage('cleanup') {
  		deleteDir()
- 		checkout scm
+ 		//checkout scm
  	}
  
     stage('Checkout') {
