@@ -54,7 +54,7 @@ node {
         				"tags" : "DockerService"
     					}
   					},
-  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Staging",
+  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Staging (http)",
   					"deploymentVersion":"1.1",
   					"deploymentProject":"DockerService",
   					"remediationAction":"https://192.168.2.85/#/templates/job_template/7",
@@ -157,7 +157,7 @@ node {
         				"tags" : "DockerService"
     					}
   					},
-  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Production",
+  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Production (http)",
   					"deploymentVersion":"1.1",
   					"deploymentProject":"DockerService",
   					"remediationAction":"https://192.168.2.85/#/templates/job_template/7",
@@ -207,6 +207,20 @@ node {
                '${JENKINS_URL} ${JOB_URL} ${BUILD_URL} ${GIT_COMMIT}'
         }
     }
+
+   stage('Run NeoLoad - scenario1') {
+        dir ('NeoLoad') {
+        //NeoLoad Test
+        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
+        }
+    } 
+    
+   stage('Run NeoLoad - scenario2') {
+        dir ('NeoLoad') {
+        //NeoLoad Test
+        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', scenario: 'scenario2', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
+        }
+    } 
     
     stage('ValidateProduction') {
         dir ('dynatrace-scripts') {
@@ -226,11 +240,5 @@ node {
             archiveArtifacts artifacts: 'dtprodlinks.txt', fingerprint: true
         }
     }  
-    
-   stage('RunLoad') {
-        dir ('NeoLoad') {
-        //NeoLoad Test
-        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
-        }
-    }  
+     
 }
