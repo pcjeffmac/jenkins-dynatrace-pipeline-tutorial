@@ -218,7 +218,7 @@ node {
    stage('Run NeoLoad - scenario2') {
         dir ('NeoLoad') {
         //NeoLoad Test
-        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd -nlweb -nlwebAPIURL http://192.168.3.70:8080 -nlwebToken UYWWcrEsfg5o37ASFBdeXh9Y', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', scenario: 'scenario2', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
+        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd -nlweb -nlwebAPIURL http://192.168.3.70:8080/ -nlwebToken UYWWcrEsfg5o37ASFBdeXh9Y', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', scenario: 'scenario2', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
         }
     } 
     
