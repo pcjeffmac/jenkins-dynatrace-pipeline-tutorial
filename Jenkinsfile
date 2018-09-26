@@ -214,14 +214,7 @@ node {
         neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', testDescription: 'From Jenkins', commandLineOption: '-nlweb -nlwebAPIURL http://192.168.2.93:8080/ -nlwebToken UYWWcrEsfg5o37ASFBdeXh9Y', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
         }
     } 
-    
-   stage('Run NeoLoad - scenario2') {
-        dir ('NeoLoad') {
-        //NeoLoad Test
-        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', testName: 'scenerio2 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', testDescription: 'From Jenkins', commandLineOption: '-nlweb -nlwebAPIURL http://192.168.2.93:8080/ -nlwebToken UYWWcrEsfg5o37ASFBdeXh9Y', scenario: 'scenario2', trendGraphs: ['AvgResponseTime', 'ErrorRate']    
-        }
-    } 
-    
+       
     stage('ValidateProduction') {
         dir ('dynatrace-scripts') {
             DYNATRACE_PROBLEM_COUNT = sh (script: './checkforproblems.sh', returnStatus : true)
