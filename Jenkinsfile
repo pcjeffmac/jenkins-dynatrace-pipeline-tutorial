@@ -211,7 +211,7 @@ node {
    stage('Run NeoLoad - scenario1') {
         dir ('NeoLoad') {
         //NeoLoad Test
-        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', testDescription: 'From Jenkins', commandLineOption: '-nlweb -nlwebAPIURL http://192.168.2.93:8080/ -nlwebToken qBmjKe13OshxpIm4npUQLNOE', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
+        neoloadRun executable: '/opt/Neoload6.6/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', testDescription: 'From Jenkins', commandLineOption: '-nlweb -nlwebAPIURL http://192.168.3.17:8080/ -nlwebToken qBmjKe13OshxpIm4npUQLNOE', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
         }
     } 
        
