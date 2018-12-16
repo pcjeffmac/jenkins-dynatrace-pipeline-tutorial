@@ -68,7 +68,7 @@ node {
   						}
 					}"""
         	
-			httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token CGVha39QTheyn1UFufsvC']], httpMode: 'POST', ignoreSslErrors: true, requestBody: body, responseHandle: 'NONE', url: 'https://ibg73613.live.dynatrace.com/'        	
+			httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token CGVha39QTheyn1UFufsvC']], httpMode: 'POST', ignoreSslErrors: true, requestBody: body, responseHandle: 'NONE', url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        	
             
             echo "Jenkins URL: ${JENKINS_URL}"
             echo "Job URL: ${JOB_URL}"
@@ -169,7 +169,7 @@ node {
   						}
 					}"""
         	
-			httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token CGVha39QTheyn1UFufsvC']], httpMode: 'POST', ignoreSslErrors: true, requestBody: body, responseHandle: 'NONE', url: 'https://ibg73613.live.dynatrace.com/'        	
+			httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token CGVha39QTheyn1UFufsvC']], httpMode: 'POST', ignoreSslErrors: true, requestBody: body, responseHandle: 'NONE', url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        	
                      
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
             sh './pushdeployment.sh HOST CONTEXTLESS mylab JenkinsTutorial '+
