@@ -75,7 +75,7 @@ node {
             echo "Build URL: ${BUILD_URL}" 
             
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
-            sh './pushdeployment.sh HOST CONTEXTLESS Jenkins ' +
+            sh './pushdeployment.sh HOST CONTEXTLESS Environment Jenkins ' +
                '${BUILD_TAG} ${BUILD_NUMBER} ${JOB_NAME} Jenkins ${JENKINS_URL} ${JOB_URL} ${BUILD_URL} None'
             
             // now I push one on the actual service (it has the tags from our rules)
