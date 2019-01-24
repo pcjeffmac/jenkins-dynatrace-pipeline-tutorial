@@ -57,7 +57,7 @@ node {
   					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Staging (http)",
   					"deploymentVersion":"1.1",
   					"deploymentProject":"DockerService",
-  					"remediationAction":"https://192.168.2.85/#/templates/job_template/7",
+  					"remediationAction":"https://ansible.pcjeffint.com/#/templates/job_template/7",
   					"ciBackLink":"${BUILD_URL}",
   					"source":"Jenkins",
   					"customProperties":{
@@ -160,7 +160,7 @@ node {
   					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Production (http)",
   					"deploymentVersion":"1.1",
   					"deploymentProject":"DockerService",
-  					"remediationAction":"https://192.168.2.85/#/templates/job_template/7",
+  					"remediationAction":"https://ansible.pcjeffint.com/#/templates/job_template/7",
   					"ciBackLink":"${BUILD_URL}",
   					"source":"Jenkins",
   					"customProperties":{
