@@ -51,7 +51,7 @@ node {
   					"attachRules": {
     				"tagRule" : {
         			"meTypes" : "HOST",
-        				"tags" : "DockerService"
+        				"tags" : "Jenkins"
     					}
   					},
   					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Staging (http)",
@@ -75,7 +75,7 @@ node {
             echo "Build URL: ${BUILD_URL}" 
             
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
-            sh './pushdeployment.sh HOST DockerService ' +
+            sh './pushdeployment.sh HOST Jenkins ' +
                '${BUILD_TAG} ${BUILD_NUMBER} ${JOB_NAME} Jenkins ${JENKINS_URL} ${JOB_URL} ${BUILD_URL} None'
             
             // now I push one on the actual service (it has the tags from our rules)
@@ -154,7 +154,7 @@ node {
   					"attachRules": {
     				"tagRule" : {
         			"meTypes" : "HOST",
-        				"tags" : "DockerService"
+        				"tags" : "Jenkins"
     					}
   					},
   					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Production (http)",
@@ -172,7 +172,7 @@ node {
 			httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token CGVha39QTheyn1UFufsvC']], httpMode: 'POST', ignoreSslErrors: true, requestBody: body, responseHandle: 'NONE', url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        	
                      
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
-            sh './pushdeployment.sh HOST DockerService '+
+            sh './pushdeployment.sh HOST Jenkins '+
                '${BUILD_TAG} ${BUILD_NUMBER} ${JOB_NAME} Jenkins '+
                '${JENKINS_URL} ${JOB_URL} ${BUILD_URL} ${GIT_COMMIT}'
             
