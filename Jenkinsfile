@@ -221,6 +221,8 @@ node {
             echo "Dynatrace Problems Found: ${DYNATRACE_PROBLEM_COUNT}"
         }
    
+        perfSigDynatraceReports envId: 'DTSaaS', metrics: [[metricId: 'com.dynatrace.builtin:service.responsetime']], specFile: '/home/dynatrace/monspec'
+   
         // now lets generate a report using our CLI and lets generate some direct links back to dynatrace
         dir ('dynatrace-cli') {
             sh 'python3 dtcli.py dqlr srv tags/CONTEXTLESS:DockerService=SampleNodeJsProduction '+
