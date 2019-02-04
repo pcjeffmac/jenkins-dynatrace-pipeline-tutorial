@@ -221,7 +221,7 @@ node {
             echo "Dynatrace Problems Found: ${DYNATRACE_PROBLEM_COUNT}"
         }
    
-        perfSigDynatraceReports envId: 'DTSaaS', metrics: [[metricId: 'com.dynatrace.builtin:service.responsetime']], specFile: '/home/dynatrace/monspec'
+        //perfSigDynatraceReports envId: 'DTSaaS', metrics: [[metricId: 'com.dynatrace.builtin:service.responsetime']], specFile: '/home/dynatrace/monspec/monspec.json'
    
         // now lets generate a report using our CLI and lets generate some direct links back to dynatrace
         dir ('dynatrace-cli') {
