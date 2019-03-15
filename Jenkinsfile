@@ -88,7 +88,7 @@ node {
                '${BUILD_TAG} ${BUILD_NUMBER} ${JOB_NAME} Jenkins ${JENKINS_URL} ${JOB_URL} ${BUILD_URL} None'
             
         	//Dynatrace POST action for deployment Event      	
-        	def body = """{"eventType": "CUSTOM_DEPLOYMENT",
+        	def body2 = """{"eventType": "CUSTOM_DEPLOYMENT",
   					"attachRules": {
     				"tagRule" : {
         			"meTypes" : "SERVICE",
@@ -116,7 +116,7 @@ node {
 			value: 'Api-Token CGVha39QTheyn1UFufsvC']], 
 			httpMode: 'POST', 
 			ignoreSslErrors: true, 
-			requestBody: body, 
+			requestBody: body2, 
 			responseHandle: 'NONE', 
 			url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        		
                  
