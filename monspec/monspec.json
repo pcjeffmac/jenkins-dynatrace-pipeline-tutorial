@@ -89,12 +89,12 @@
             },
             { 
                 "timeseries" : "com.dynatrace.builtin:service.responsetime",
-                "aggregate" : "p90"
+                "aggregate" : "p90",
                 "tags" : "DockerService:SampleNodeJsStaging"
             },
             { 
                 "timeseries" : "com.dynatrace.builtin:service.failurerate",
-                "aggregate" : "avg"
+                "aggregate" : "avg",
                 "tags" : "DockerService:SampleNodeJsStaging"
             },
             { 
