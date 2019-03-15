@@ -86,44 +86,7 @@ node {
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
             sh './pushdeployment.sh HOST CONTEXTLESS jenkins jenkinsDynatrace ' +
                '${BUILD_TAG} ${BUILD_NUMBER} ${JOB_NAME} Jenkins ${JENKINS_URL} ${JOB_URL} ${BUILD_URL} None'
-            
-        	//Dynatrace POST action for deployment Event      	
-        	def body2 = """{"eventType": "CUSTOM_DEPLOYMENT",
-  					"attachRules": {
-    				"tagRule" : {
-        			"meTypes" : "SERVICE",
-        			"tags" : 
-         				 {
-            			"context" : "CONTEXTLESS",
-            			"key" : "DockerService",
-            			"value" : "SampleNodeJsStaging"
-          				}
-  					},
-  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Staging (http)",
-  					"deploymentVersion":"1.1",
-  					"deploymentProject":"DockerService",
-  					"remediationAction":"https://ansible.pcjeffint.com/#/templates/job_template/7",
-  					"ciBackLink":"${BUILD_URL}",
-  					"source":"Jenkins",
-  					"customProperties":{
-    					"Jenkins Build Number": "${BUILD_ID}",
-    					"Environment": "Staging",
-    					"Job URL": "${JOB_URL}",
-    					"Build URL": "${BUILD_URL}"
-  						}
-					}"""
-       	 	//send json payload	
-			httpRequest acceptType: 'APPLICATION_JSON', 
-			authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', 
-			contentType: 'APPLICATION_JSON', 
-			customHeaders: [[maskValue: true, name: 'Authorization', 
-			value: 'Api-Token CGVha39QTheyn1UFufsvC']], 
-			httpMode: 'POST', 
-			ignoreSslErrors: true, 
-			requestBody: body2, 
-			responseHandle: 'NONE', 
-			url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        		
-                 
+                  		     
             // now I push one on the actual service (it has the tags from our rules)
             sh './pushdeployment.sh SERVICE CONTEXTLESS DockerService SampleNodeJsStaging ' + 
                '${BUILD_TAG} ${BUILD_NUMBER} ${JOB_NAME} ' + 
@@ -149,8 +112,7 @@ node {
             			[
                 			meTypes: [[meType: 'SERVICE']],
                 		tags: [
-                    	    [context: 'CONTEXTLESS', key: 'Service', value: 'Sample-NodeJs-Service'],
-                    	    [context: 'CONTEXTLESS', key: 'Environment', value: 'Staging']
+                    	    [context: 'CONTEXTLESS', key: 'DockerService', value: 'SampleNodeJsStaging']
                 			]
             		]
         			]) 
