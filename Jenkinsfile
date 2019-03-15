@@ -68,7 +68,16 @@ node {
   						}
 					}"""
         	
-			httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token CGVha39QTheyn1UFufsvC']], httpMode: 'POST', ignoreSslErrors: true, requestBody: body, responseHandle: 'NONE', url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        	
+			httpRequest acceptType: 'APPLICATION_JSON', 
+			authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', 
+			contentType: 'APPLICATION_JSON', 
+			customHeaders: [[maskValue: true, name: 'Authorization', 
+			value: 'Api-Token CGVha39QTheyn1UFufsvC']], 
+			httpMode: 'POST', 
+			ignoreSslErrors: true, 
+			requestBody: body, 
+			responseHandle: 'NONE', 
+			url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        	
             
             echo "Jenkins URL: ${JENKINS_URL}"
             echo "Job URL: ${JOB_URL}"
@@ -95,6 +104,20 @@ node {
         
         // lets run some test scripts
         dir ('sample-nodejs-service-tests') {
+        	        //PerfSig record test
+        			recordDynatraceSession(
+        			envId: 'DTSaaS',
+        			testCase: 'loadtest',
+        				tagMatchRules: [
+            			[
+                			meTypes: [[meType: 'SERVICE']],
+                		tags: [
+                    	    [context: 'CONTEXTLESS', key: 'Service', value: 'Sample-NodeJs-Service'],
+                    	    [context: 'CONTEXTLESS', key: 'Environment', value: 'Staging']
+                			]
+            		]
+        			]) 
+        	
             // start load test and run for 120 seconds - simulating traffic for Staging enviornment on port 80
             sh "rm -f stagingloadtest.log stagingloadtestcontrol.txt"
             sh "./loadtest.sh 8480 stagingloadtest.log stagingloadtestcontrol.txt 120 Staging"
@@ -116,6 +139,10 @@ node {
             DYNATRACE_PROBLEM_COUNT = sh (script: './checkforproblems.sh', returnStatus : true)
             echo "Dynatrace Problems Found: ${DYNATRACE_PROBLEM_COUNT}"
         }
+        
+		//Produce PerSig reports
+        perfSigDynatraceReports envId: 'DTSaaS', nonFunctionalFailure: 1, specFile: 'monspec/monspec.json'
+        
         
         // now lets generate a report using our CLI and lets generate some direct links back to dynatrace
         dir ('dynatrace-cli') {
@@ -169,7 +196,16 @@ node {
   						}
 					}"""
         	
-			httpRequest acceptType: 'APPLICATION_JSON', authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token CGVha39QTheyn1UFufsvC']], httpMode: 'POST', ignoreSslErrors: true, requestBody: body, responseHandle: 'NONE', url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        	
+			httpRequest acceptType: 'APPLICATION_JSON', 
+			authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', 
+			contentType: 'APPLICATION_JSON', 
+			customHeaders: [[maskValue: true, name: 'Authorization', 
+			value: 'Api-Token CGVha39QTheyn1UFufsvC']], 
+			httpMode: 'POST', 
+			ignoreSslErrors: true, 
+			requestBody: body, 
+			responseHandle: 'NONE', 
+			url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        	
                      
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
             sh './pushdeployment.sh HOST CONTEXTLESS jenkins jenkinsDynatrace '+
@@ -210,8 +246,27 @@ node {
 
    stage('Run NeoLoad - scenario1') {
         dir ('NeoLoad') {
+                //PerfSig record test
+        recordDynatraceSession(
+        	envId: 'DTSaaS',
+        	testCase: 'loadtest',
+        	tagMatchRules: [
+            	[
+                	meTypes: [[meType: 'SERVICE']],
+                	tags: [
+                    	    [context: 'CONTEXTLESS', key: 'easyTravelDocker', value: 'www']
+                	]
+            	]
+        	]) {
+        
         //NeoLoad Test
-        neoloadRun executable: '/opt/Neoload6.7/bin/NeoLoadCmd', project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', testDescription: 'From Jenkins', commandLineOption: '-nlweb -nlwebAPIURL http://neoload.pcjeffint.com:8080/ -nlwebToken Qj1TTQz1HXJaZgIFAtfBtk05', scenario: 'scenario1', trendGraphs: ['AvgResponseTime', 'ErrorRate']     
+        neoloadRun executable: '/opt/Neoload6.7/bin/NeoLoadCmd', 
+        project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', 
+        testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', 
+        testDescription: 'From Jenkins', 
+        commandLineOption: '-nlweb -nlwebAPIURL http://neoload.pcjeffint.com:8080/ -nlwebToken Qj1TTQz1HXJaZgIFAtfBtk05', 
+        scenario: 'scenario1', 
+        trendGraphs: ['AvgResponseTime', 'ErrorRate']     
         }
     } 
        
