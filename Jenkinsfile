@@ -131,7 +131,7 @@ node {
                '"STOPPING Load Test" ${JOB_NAME} "Stopping a Load Test as part of the Testing stage" '+
                '${JENKINS_URL} ${JOB_URL} ${BUILD_URL} ${GIT_COMMIT}'
         }
-    }
+    } }
     
     stage('ValidateStaging') {
         // lets see if Dynatrace AI found problems -> if so - we can stop the pipeline!
