@@ -78,6 +78,7 @@
             { 
                 "timeseries" : "com.dynatrace.builtin:service.responsetime",
                 "aggregate" : "avg",
+                "tags" : "DockerService:SampleNodeJsStaging",
                 "validate" : "upper",
                 "_upperlimit" : 100,
                 "_lowerlimit" : 50,
@@ -89,24 +90,29 @@
             { 
                 "timeseries" : "com.dynatrace.builtin:service.responsetime",
                 "aggregate" : "p90"
+                "tags" : "DockerService:SampleNodeJsStaging"
             },
             { 
                 "timeseries" : "com.dynatrace.builtin:service.failurerate",
                 "aggregate" : "avg"
+                "tags" : "DockerService:SampleNodeJsStaging"
             },
             { 
                 "timeseries" : "com.dynatrace.builtin:service.requestspermin",
                 "aggregate" : "count",
+                "tags" : "DockerService:SampleNodeJsStaging",
                 "validate" : "lower"
             },
             {
                 "smartscape" : "toRelationships:calls",
                 "aggregate" : "count",
+                "tags" : "DockerService:SampleNodeJsStaging",
                 "validate" : "lower"
             },
             {
                 "smartscape" : "fromRelationships:runsOn",
                 "aggregate" : "count",
+                "tags" : "DockerService:SampleNodeJsStaging",
                 "validate" : "lower"
             }
         ],
