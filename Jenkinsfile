@@ -139,7 +139,7 @@ node {
         }
         
 		//Produce PerSig reports
-        perfSigDynatraceReports envId: 'DTSaaS', nonFunctionalFailure: 1, specFile: 'monspec/monspec.json'
+        perfSigDynatraceReports envId: 'DTSaaS', nonFunctionalFailure: 1, specFile: '/var/lib/jenkins/jobs/NodeJSDockerBuild/workspace/monspec/monspec.json'
         
         
         // now lets generate a report using our CLI and lets generate some direct links back to dynatrace
