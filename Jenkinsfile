@@ -115,13 +115,13 @@ node {
                     	    [context: 'CONTEXTLESS', key: 'DockerService', value: 'SampleNodeJsStaging']
                 			]
             		]
-        			]) 
+        			]) {
             // start load test and run for 120 seconds - simulating traffic for Staging enviornment on port 80
             sh "rm -f stagingloadtest.log stagingloadtestcontrol.txt"
             sh "./loadtest.sh 8480 stagingloadtest.log stagingloadtestcontrol.txt 120 Staging"
             
             archiveArtifacts artifacts: 'stagingloadtest.log', fingerprint: true
-        }
+        } }
 
         // lets push an event to dynatrace that indicates that we STOP a load test
         dir ('dynatrace-scripts') {
