@@ -1,0 +1,20 @@
+{
+    "_lowerLimit" : 0.0,
+    "_upperLimit" : 1000.0,
+    "timeseries" : [
+        {
+            "timeseriesId" : "com.dynatrace.builtin:service.responsetime",
+            "aggregation" : "avg",
+            "tags" : "DockerService:SampleNodeJsStaging",
+            "upperLimit" : 1800000.0,
+            "lowerLimit" : 1600000.0
+        },
+        {
+            "timeseriesId" : "com.dynatrace.builtin:service.failurerate",
+            "aggregation" : "avg",
+            "tags" : "DockerService:SampleNodeJsStaging",
+            "upperLimit" : 5.0,
+            "lowerLimit" : 0.0
+        }
+    ]
+}
