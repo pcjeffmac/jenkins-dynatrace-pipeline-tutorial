@@ -116,7 +116,6 @@ node {
                 			]
             		]
         			]) 
-        	{
             // start load test and run for 120 seconds - simulating traffic for Staging enviornment on port 80
             sh "rm -f stagingloadtest.log stagingloadtestcontrol.txt"
             sh "./loadtest.sh 8480 stagingloadtest.log stagingloadtestcontrol.txt 120 Staging"
@@ -130,7 +129,7 @@ node {
                '"STOPPING Load Test" ${JOB_NAME} "Stopping a Load Test as part of the Testing stage" '+
                '${JENKINS_URL} ${JOB_URL} ${BUILD_URL} ${GIT_COMMIT}'
         }
-    } }
+    } 
     
     stage('ValidateStaging') {
         // lets see if Dynatrace AI found problems -> if so - we can stop the pipeline!
