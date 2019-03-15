@@ -245,20 +245,7 @@ node {
     }
 
    stage('Run NeoLoad - scenario1') {
-        dir ('NeoLoad') {
-                //PerfSig record test
-        recordDynatraceSession(
-        	envId: 'DTSaaS',
-        	testCase: 'loadtest',
-        	tagMatchRules: [
-            	[
-                	meTypes: [[meType: 'SERVICE']],
-                	tags: [
-                    	    [context: 'CONTEXTLESS', key: 'easyTravelDocker', value: 'www']
-                	]
-            	]
-        	]) {
-        
+        dir ('NeoLoad') {      
         //NeoLoad Test
         neoloadRun executable: '/opt/Neoload6.7/bin/NeoLoadCmd', 
         project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', 
