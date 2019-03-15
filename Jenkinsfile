@@ -92,7 +92,7 @@ node {
   					"attachRules": {
     				"tagRule" : {
         			"meTypes" : "SERVICE",
-        				"tags" : "SampleNodeJsStaging"
+        				"tags" : "DockerService:SampleNodeJsStaging"
     					}
   					},
   					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} Staging (http)",
