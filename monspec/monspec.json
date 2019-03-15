@@ -89,30 +89,25 @@
             },
             { 
                 "timeseries" : "com.dynatrace.builtin:service.responsetime",
-                "aggregate" : "p90",
-                "tags" : "DockerService:SampleNodeJsStaging"
+                "aggregate" : "p90"
             },
             { 
                 "timeseries" : "com.dynatrace.builtin:service.failurerate",
-                "aggregate" : "avg",
-                "tags" : "DockerService:SampleNodeJsStaging"
+                "aggregate" : "avg"
             },
             { 
                 "timeseries" : "com.dynatrace.builtin:service.requestspermin",
                 "aggregate" : "count",
-                "tags" : "DockerService:SampleNodeJsStaging",
                 "validate" : "lower"
             },
             {
                 "smartscape" : "toRelationships:calls",
                 "aggregate" : "count",
-                "tags" : "DockerService:SampleNodeJsStaging",
                 "validate" : "lower"
             },
             {
                 "smartscape" : "fromRelationships:runsOn",
                 "aggregate" : "count",
-                "tags" : "DockerService:SampleNodeJsStaging",
                 "validate" : "lower"
             }
         ],
