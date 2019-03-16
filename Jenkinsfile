@@ -107,7 +107,7 @@ node {
         	        //PerfSig record test
         			recordDynatraceSession(
         			envId: 'DTSaaS',
-        			testCase: 'loadtest',
+        			testCase: 'NodeJs-loadtest',
         				tagMatchRules: [
             			[
                 			meTypes: [[meType: 'SERVICE']],
