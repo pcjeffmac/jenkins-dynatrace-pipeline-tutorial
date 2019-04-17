@@ -7,14 +7,14 @@
             "aggregation" : "avg",
             "tags" : "DockerService:SampleNodeJsStaging",
             "upperLimit" : 1800000.0,
-            "lowerLimit" : 1600000.0
+            "lowerLimit" : 3.0
         },
         {
             "timeseriesId" : "com.dynatrace.builtin:service.failurerate",
             "aggregation" : "avg",
             "tags" : "DockerService:SampleNodeJsStaging",
             "upperLimit" : 5.0,
-            "lowerLimit" : 0.0
+            "lowerLimit" : 3.0
         }
     ]
 }
