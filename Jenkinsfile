@@ -251,7 +251,7 @@ node {
         project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', 
         testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', 
         testDescription: 'From Jenkins', 
-        commandLineOption: '-nlweb -nlwebAPIURL http://neoload.pcjeffint.com:8080/ -nlwebToken Qj1TTQz1HXJaZgIFAtfBtk05', 
+        commandLineOption: '-nlweb -nlwebAPIURL http://neoload.pcjeffint.com:8080/ -nlwebToken 7s0HuWYvPbItlC3SP1oGnU1C', 
         scenario: 'scenario1', 
         trendGraphs: ['AvgResponseTime', 'ErrorRate']     
         }
