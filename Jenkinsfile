@@ -72,12 +72,12 @@ node {
 			authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', 
 			contentType: 'APPLICATION_JSON', 
 			customHeaders: [[maskValue: true, name: 'Authorization', 
-			value: 'Api-Token CGVha39QTheyn1UFufsvC']], 
+			value: "Api-Token ${DT_API_TOKEN}"]], 
 			httpMode: 'POST', 
 			ignoreSslErrors: true, 
 			requestBody: body, 
 			responseHandle: 'NONE', 
-			url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        	
+			url: "${DT_TENANT_URL}/api/v1/events/"         	
             
             echo "Jenkins URL: ${JENKINS_URL}"
             echo "Job URL: ${JOB_URL}"
@@ -200,12 +200,12 @@ node {
 			authentication: 'a47386bc-8488-41c0-a806-07b1123560e3', 
 			contentType: 'APPLICATION_JSON', 
 			customHeaders: [[maskValue: true, name: 'Authorization', 
-			value: 'Api-Token CGVha39QTheyn1UFufsvC']], 
+			value: "Api-Token ${DT_API_TOKEN}"]], 
 			httpMode: 'POST', 
 			ignoreSslErrors: true, 
 			requestBody: body, 
 			responseHandle: 'NONE', 
-			url: 'https://ibg73613.live.dynatrace.com/api/v1/events/'        	
+			url: "${DT_TENANT_URL}/api/v1/events/"        	
                      
             // push a deployment event on the host with the tag [AWS]Environment:JenkinsTutorial
             sh './pushdeployment.sh HOST CONTEXTLESS jenkins jenkinsDynatrace '+
@@ -251,7 +251,7 @@ node {
         project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', 
         testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', 
         testDescription: 'From Jenkins', 
-        commandLineOption: '-nlweb -nlwebAPIURL http://neoload.pcjeffint.com:8080/ -nlwebToken 7s0HuWYvPbItlC3SP1oGnU1C', 
+        commandLineOption: '-nlweb -nlwebAPIURL ${NL_WEB_URL} -nlwebToken ${NL_WEB_TOKEN} -noGUI', 
         scenario: 'scenario1', 
         trendGraphs: ['AvgResponseTime', 'ErrorRate']     
         }
