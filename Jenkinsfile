@@ -250,9 +250,9 @@ node {
 	//sh "mkdir /var/lib/jenkins/jobs/NodeJSDockerBuild/workspace/NeoLoad"
         neoloadRun executable: '/opt/Neoload6.7/bin/NeoLoadCmd', 
         project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', 
-        testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', 
+        testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy}' + "(build ${BUILD_NUMBER})", 
         testDescription: 'From Jenkins', 
-        commandLineOption: '-nlweb -nlwebAPIURL ${NL_WEB_URL} -nlwebToken ${NL_WEB_TOKEN} -noGUI', 
+        commandLineOption: "-nlweb -nlwebAPIURL ${NL_WEB_URL} -nlwebToken ${NL_WEB_TOKEN} -noGUI", 
         scenario: 'scenario1', 
         trendGraphs: ['AvgResponseTime', 'ErrorRate']     
         }
