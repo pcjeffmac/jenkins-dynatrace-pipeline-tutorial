@@ -247,7 +247,7 @@ node {
    stage('Run NeoLoad - scenario1') {
         dir ('NeoLoad') {      
         //NeoLoad Test
-	sh "mkdir /var/lib/jenkins/jobs/NodeJSDockerBuild/workspace/NeoLoad"
+	//sh "mkdir /var/lib/jenkins/jobs/NodeJSDockerBuild/workspace/NeoLoad"
         neoloadRun executable: '/opt/Neoload6.7/bin/NeoLoadCmd', 
         project: '/home/dynatrace/NeoLoadProjects/DemoProject/DemoProject.nlp', 
         testName: 'scenerio1 $Date{hh:mm - dd MMM yyyy} (build ${BUILD_NUMBER})', 
